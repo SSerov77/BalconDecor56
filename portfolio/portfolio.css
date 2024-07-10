@@ -30,7 +30,7 @@ a {
 }
 
 .header-content {
-    width: 75%;
+    width: 85%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -62,27 +62,57 @@ a {
 /* HEADER MOBILE */
 
 .header_mobile {
-    width: 100;
+    width: 100%;
     min-height: 100px;
-    background-color: #F2F2F2;
     border-bottom: 1px solid var(--main-color-text);
     display: flex;
     justify-content: center;
     align-items: center;
-
+    background-color: #F2F2F2;
 }
 
 .header_mobile-content {
-    width: 75%;
+    width: 85%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.icon_mobile {
-    width: 52px;
-    height: 52px;
+
+.menu {
+    margin-top: 100px;
+    padding-right: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    justify-content: right;
+    width: 170px;
+    z-index: 2;
+    top: 0px;
+    right: 0px;
+    color: #000000;
+    background-color: #F2F2F2;
 }
+
+h1 {
+    color: #000000;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+label img {
+    height: 32px;
+    width: 32px;
+}
+
+.menu_button:checked + label .menu {
+    background-color: aqua;
+    display: none;
+}
+
+
 
 /* MAIN */
 
@@ -131,7 +161,7 @@ a {
 }
 
 .footer-content {
-    width: 75%;
+    width: 85%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -139,7 +169,7 @@ a {
 
 .contacts-icons {
     display: flex;
-    gap: 65px;
+    gap: 25px;
 }
 
 .icon {
@@ -150,6 +180,10 @@ a {
 .icon:hover{
     opacity: 0.7;
     transition: .3s;
+}
+
+.logo {
+    width: 80%;
 }
 
 /* ADAPTABILITY */
@@ -173,9 +207,26 @@ a {
 
     .imgs {
         align-items: center;
+        gap: 10px;
     }
 
     .imgs img {
         width: 100%;
+    }
+
+    .icon {
+        width: 23px;
+        height: 23px;
+        margin: 5px;
+    }
+
+    .logo {
+        width: 60%;
+    }
+
+    .title {
+        display: flex;
+        margin: 20px 0;
+        font-size: 30px;
     }
 }
