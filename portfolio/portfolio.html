@@ -18,21 +18,27 @@
                 <a href="#" class="nav">Портфолио</a>
                 <a href="/contacts/contacts.html" class="nav">Контакты</a>
             </div>
-            <p class="phone">+7 (922) 547-42-32</p>
+            <p class="phone" id="copyable">+7 (922) 547-42-32</p>
         </div>
     </header>
     <header class="header_mobile">
         <div class="header_mobile-content">
             <a href=""><img src="/imgs/logo-black.svg" alt="" class="logo"></a>
-            <input type="checkbox" id="menu" class="menu_button">
-            <label for="menu">
-                <img src="/imgs/menu.svg" alt="">
-                <div class="menu">
-                    <h1>абоба1</h1>
-                    <h1>абоба2</h1>
-                    <h1>абоба3</h1>
+            <div class="off-screen-menu">
+                <ul class="text-group">
+                    <a href="/main/main.html" class="nav-burg">О нас</a>
+                    <a href="/services/services.html" class="nav-burg">Услуги</a>
+                    <a href="/vacancy/vacancy.html" class="nav-burg">Вакансии</a>
+                    <a href="#" class="nav-burg">Портфолио</a>
+                </ul>
+            </div>
+            <nav>
+                <div class="ham-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-            </label>
+            </nav>
         </div>
         
     </header>
@@ -61,4 +67,5 @@
         </div>
     </footer>
 </body>
+<script src="/burger_menu.js"></script>
 </html>

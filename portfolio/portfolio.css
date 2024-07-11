@@ -5,7 +5,9 @@
     margin: 0;
     color: #FFFFFF;
     font-family: "Montserrat", sans-serif;
+    overflow-x: hidden;
 }
+
 
 a {
     text-decoration: none;
@@ -15,6 +17,14 @@ a {
     --main-color-text: #FFFFFF;
     --main-color: #1D3557;
     --black: #000000;
+}
+
+body {
+    user-select: none; 
+}
+
+#copyable {
+    user-select: all; 
 }
 
 /* HEADER */
@@ -43,14 +53,29 @@ a {
 }
 
 .navbar a {
+    position: relative;
+    text-decoration: none;
     font-size: 18px;
     height: 25px;
     padding-top: 1px;
     color: var(--black);
 }
 
-.navbar a:hover {
-    border-bottom: 1px solid var(--black);
+.navbar a::after {
+    position: absolute;
+    content: '';
+    left: 50%;
+    bottom: 0;
+    display: block;
+    width: 0;
+    height: 1px;
+    background: #000;
+    transition: 0.3s;
+    transform: translateX(-50%);
+}
+
+.navbar a:hover:after {
+    width: 100%;
 }
 
 .phone {
@@ -62,13 +87,16 @@ a {
 /* HEADER MOBILE */
 
 .header_mobile {
+    position: fixed;
+    top: 0;
     width: 100%;
-    min-height: 100px;
+    min-height: 75px;
     border-bottom: 1px solid var(--main-color-text);
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #F2F2F2;
+    z-index: 2;
 }
 
 .header_mobile-content {
@@ -78,41 +106,100 @@ a {
     justify-content: space-between;
 }
 
-
-.menu {
-    margin-top: 100px;
-    padding-right: 10px;
+.off-screen-menu {
+    background-color: #e8e8e8;
+    height: 0%;
+    display: none;
+    width: 100%;
+    top: 75px;
+    position: fixed;
+    right: 0;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    font-size: 2rem;
+    transition: .2s ease;
+}
+
+.off-screen-menu.active {
+    height: 165px;
+}
+
+.text-group {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.nav-burg {
+    position: relative;
+    text-decoration: none;
+    font-size: 70%;
+    font-weight: 500;
+    width: 100%;
+}
+
+.nav-burg::after {
     position: absolute;
-    justify-content: right;
-    width: 170px;
-    z-index: 2;
-    top: 0px;
-    right: 0px;
-    color: #000000;
-    background-color: #F2F2F2;
+    content: '';
+    left: 50%;
+    bottom: 0;
+    display: block;
+    width: 0;
+    height: 1px;
+    background: #000;
+    transition: 0.3s;
+    transform: translateX(-50%);
 }
 
-h1 {
-    color: #000000;
+.nav-burg:hover:after {
+    width: 100%;
 }
 
-input[type="checkbox"] {
-    display: none;
+.ham-menu {
+    height: 50px;
+    width: 50px;
+    margin-left: auto;
+    position: relative;
+    
 }
 
-label img {
-    height: 32px;
-    width: 32px;
+.ham-menu span {
+    height: 3px;
+    width: 75%;
+    background-color: black;
+    border-radius: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .2s ease;
 }
 
-.menu_button:checked + label .menu {
-    background-color: aqua;
-    display: none;
+.ham-menu span:nth-child(1) {
+    top: 30%;
 }
 
+.ham-menu span:nth-child(3) {
+    top: 70%;
+}
 
+.ham-menu.active span:nth-child(1) {
+    top: 50%;
+    transform: translate(-50%, 50%) rotate(45deg);
+}
+
+.ham-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.ham-menu.active span:nth-child(3) {
+    top: 50%;
+    transform: translate(-50%, 50%) rotate(-45deg);
+}
 
 /* MAIN */
 
@@ -139,7 +226,7 @@ label img {
 
 .imgs img {
     width: 30%;
-    border: 2px solid var(--black);
+    border: 1.5px solid var(--black);
     border-radius: 10px;
 }
 
@@ -188,15 +275,48 @@ label img {
 
 /* ADAPTABILITY */
 
-@media (min-width:769px) {
+@media (min-width:1032px) {
     .header_mobile {
         display: none;
     }
 }
 
-@media (max-width:768px) {
+@media (max-width:1031px) {
     .header {
         display: none;
+    }
+
+    .imgs {
+        align-items: center;
+        gap: 10px;
+    }
+
+    .imgs img {
+        width: 100%;
+    }
+
+    .icon {
+        width: 23px;
+        height: 23px;
+        margin: 5px;
+    }
+
+    .logo {
+        width: 60%;
+    }
+
+    .title {
+        display: flex;
+        margin: 20px 0;
+        font-size: 30px;
+    }
+
+    .nav-burg {
+        color: #000;
+    }
+
+    .main {
+        margin-top: 75px;
     }
 }
 
@@ -228,5 +348,13 @@ label img {
         display: flex;
         margin: 20px 0;
         font-size: 30px;
+    }
+
+    .nav-burg {
+        color: #000;
+    }
+
+    .main {
+        margin-top: 75px;
     }
 }
